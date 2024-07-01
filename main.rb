@@ -1,61 +1,23 @@
-class Player
-  attr_accessor :name, :kills
-
-  def initialize(id, name)
-    @id = id
-    @name = name
-    @kills = 0
-  end
-
-  def increment_kills
-    @kills += 1
-  end
-end
-
-class Game
-  attr_accessor :players, :total_kills
-
-  WORLD = 1022 # id de <world>
-
-  def initialize(game_id)
-    @game_name = "Game_#{game_id}"
-    @players = {}
-    @total_kills = 0
-  end
-
-  def update_player(id, name)
-    if @players[id] and @players[id].name != name
-      @players[id].name = name
-    else
-      @players.store(id, Player.new(id, name))
-    end
-  end
-
-  def increment_total_kills
-    @total_kills += 1
-  end
-
-  def add_kill(killer_id, killed_id, cause)
-
-  end
-
-end
+require_relative 'game'
+require_relative 'utils'
 
 def parse_game(file, game_id)
   game = Game.new(game_id)
 
   file.each_line do |line|
 
+    # Skip to the next match on the file if the current game is over
     if line.include?("InitGame")
-
-      file.pos = file.pos - line.bytesize - 1
+      file.pos = file.pos - line.bytesize - 1 # Rewinds file by one line
       break
 
-    elsif (player_changed = line.match(/^*ClientUserinfoChanged: (\d) n\\(.+)\\/))
+    # Collect Clients
+    elsif (player_changed = line.match(/^*ClientUserinfoChanged: (\d) n\\(.+?)\\.*/))
       id, name = player_changed.captures
       game.update_player(id, name)
 
-    elsif (kill = line.match(/Kill: (\d) (\d) \d: .+ killed .+ by (.+)/))
+    # Collect Kill Data
+    elsif (kill = line.match(/^*Kill: (\d+) (\d+) \d+: .+ killed .+ by (.+)/))
       killer, killed, cause = kill.captures
       game.add_kill(killer, killed, cause)
     end
@@ -70,21 +32,38 @@ def parse_log(filename)
 
   File.open(filename, "r") do |file|
     file.each_line do |line|
+
+      # Group information for each game in the file
       if line.include?("InitGame")
         game_count += 1
-        # puts "--------- Iniciando Jogo #{game_count }--------"
         current_game = parse_game(file, game_count)
-        # puts "--------- Finalizando Jogo #{game_count} --------"
         games << current_game
       end
+
     end
   end
+
   games
 end
 
-# Exemplo de uso
-filename = "qgames.log"
-games = parse_log(filename)
-# games.each do |game|
-#     game.print_game_info
-# end
+def main
+  filename = "qgames.log"
+  games = parse_log(filename)
+
+  # 3.3 - Create a script that prints a report (grouped information) for each match and a player ranking.
+  games.each do |game|
+    puts "------------- MATCH #{game.name} REPORT -------------"
+    game.match_report
+  end
+  puts "------------- GLOBAL RANKING -------------"
+  global_ranking(games)
+
+  # 3.4 - Generate a report of deaths grouped by death cause for each match.
+  games.each do |game|
+    puts "------------- DEATH BY CAUSE REPORT (MATCH #{game.name}) -------------"
+    game.death_report
+  end
+end
+
+
+main
