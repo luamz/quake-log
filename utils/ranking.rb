@@ -8,7 +8,6 @@ def global_ranking(games)
   end
   sorted_global_ranking = global_ranking.sort_by { |id, info| -info[:kills] }
 
-  puts "Global Player Ranking:"
   sorted_global_ranking.each_with_index do |(player_id, info), index|
     puts "#{index + 1}. #{info[:name]} - Kills: #{info[:kills]}"
   end

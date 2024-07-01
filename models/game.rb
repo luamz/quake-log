@@ -4,7 +4,7 @@ require 'json'
 class Game
   attr_accessor :name
 
-  WORLD = "1022" # id de <world>
+  WORLD = "1022" # <world> id
 
   def initialize(game_id)
     @name = "Game_#{game_id}"
