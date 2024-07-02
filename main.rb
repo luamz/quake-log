@@ -3,7 +3,13 @@ require_relative 'utils/ranking'
 
 def main
   file_name = "data/qgames.log"
-  games = Parser.parse_log(file_name)
+
+  begin
+    games = Parser.parse_log(file_name)
+  rescue => e
+    puts "Error parsing log file: #{e.message}"
+    return
+  end
 
   # 3.3 - Create a script that prints a report (grouped information) for each match (...)
   # 3.4 - Generate a report of deaths grouped by death cause for each match.
