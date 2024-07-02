@@ -51,9 +51,9 @@ The project supports the following reports:
   "Zeh": 20
   },
 "kills_by_means": {
-  "MOD_SHOTGUN": 10,
-  "MOD_RAILGUN": 2,
-  "MOD_GAUNTLET": 1,
+  "MOD_SHOTGUN": 20,
+  "MOD_RAILGUN": 21,
+  "MOD_GAUNTLET": 4,
   }
 }
 ```
