@@ -15,7 +15,7 @@ This project consists of a log parser for the game Quake III Arena, which analyz
 
 ``models/`` - classes used by the project
 
-``utils/`` - utility modules used to parse the log
+``utils/`` - utility modules used to parse and rank the log
 
 ``tests/`` - tests developed for the project
 
