@@ -23,11 +23,11 @@ class GlobalRankingTest < Minitest::Test
 
   def test_global_ranking
     expected_output = <<~OUTPUT
-      1. Daniel - Kills: 2
-      2. Maria - Kills: 1
-      3. Paula - Kills: 1
-      4. Luam - Kills: 0
-      5. Jéssica - Kills: 0
+      1. Daniel (id: 1) - Kills: 2
+      2. Maria (id: 4) - Kills: 1
+      3. Paula (id: 5) - Kills: 1
+      4. Luam (id: 2) - Kills: 0
+      5. Jéssica (id: 3) - Kills: 0
     OUTPUT
 
     games = [@game1, @game2]
@@ -41,19 +41,19 @@ class GlobalRankingTest < Minitest::Test
     @game2.update_player(1, "Erick")
 
     wrong_output = <<~OUTPUT
-      1. Daniel - Kills: 2
-      2. Maria - Kills: 1
-      3. Paula - Kills: 1
-      4. Luam - Kills: 0
-      5. Jéssica - Kills: 0
+    1. Daniel (id: 1) - Kills: 2
+      2. Maria (id: 4) - Kills: 1
+      3. Paula (id: 5) - Kills: 1
+      4. Luam (id: 2) - Kills: 0
+      5. Jéssica (id: 3) - Kills: 0
     OUTPUT
 
     expected_output = <<~OUTPUT
-      1. Erick - Kills: 2
-      2. Maria - Kills: 1
-      3. Paula - Kills: 1
-      4. Luam - Kills: 0
-      5. Jéssica - Kills: 0
+      1. Erick (id: 1) - Kills: 2
+      2. Maria (id: 4) - Kills: 1
+      3. Paula (id: 5) - Kills: 1
+      4. Luam (id: 2) - Kills: 0
+      5. Jéssica (id: 3) - Kills: 0
     OUTPUT
 
     games = [@game1, @game2]
@@ -70,11 +70,11 @@ class GlobalRankingTest < Minitest::Test
 
 
     expected_output = <<~OUTPUT
-      1. Daniel - Kills: 2
-      2. Maria - Kills: 2
-      3. Paula - Kills: 1
-      4. Luam - Kills: 0
-      5. Jéssica - Kills: 0
+      1. Daniel (id: 1) - Kills: 2
+      2. Maria (id: 4) - Kills: 2
+      3. Paula (id: 5) - Kills: 1
+      4. Luam (id: 2) - Kills: 0
+      5. Jéssica (id: 3) - Kills: 0
     OUTPUT
 
     games = [@game1, @game2]

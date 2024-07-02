@@ -14,11 +14,10 @@ class Game
   end
 
   def update_player(id, name)
-    if @players[id] and @players[id].name != name
-      @players[id].name = name
-    else
-      @players.store(id, Player.new(id, name))
-    end
+    @players[id] ||= Player.new(id, name)
+
+    # For the cases where player changes name with ClientUserinfoChanged
+    @players[id].name = name if @players[id].name != name
   end
 
   def add_kill(killer_id, killed_id, cause)
@@ -37,12 +36,15 @@ class Game
     kills = @players.values.each_with_object({}) do |player, hash|
       hash[player.name] = player.kills
     end
+    kills_by_means = @kills_by_means.sort_by { |cause, kills| -kills }.to_h
+
 
     summary = {
       @name => {
         "total_kills" => @total_kills,
         "players" => names,
-        "kills" => kills
+        "kills" => kills,
+        "kills_by_means" => kills_by_means
       }
     }
 
@@ -51,12 +53,6 @@ class Game
 
   def ranking
     @players.values.sort_by { |player| -player.kills }
-  end
-
-  def death_report
-    kills = @kills_by_means.sort_by { |cause, kills| -kills }.to_h
-    summary = { @name => { "kills_by_means": kills } }
-    puts JSON.pretty_generate(summary)
   end
 
 end

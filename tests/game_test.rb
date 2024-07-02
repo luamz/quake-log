@@ -69,6 +69,8 @@ class GameTest < Minitest::Test
 
     assert_equal report["Game_1"]["kills"]["Isabella"], 0
     assert_equal report["Game_1"]["kills"]["Hugo"], -1
+
+    assert_equal(report["Game_1"]["kills_by_means"],{ "MOD_FALL" => 2, "MOD_ROCKET" => 1 })
   end
 
   def test_ranking
@@ -89,15 +91,5 @@ class GameTest < Minitest::Test
 
     assert_equal "Simão", ranking[2].name
     assert_equal 0, ranking[2].kills
-  end
-
-  def test_death_report
-    @game.update_player(1, "Nico")
-    @game.add_kill(1, 2, "MOD_SLIME")
-    @game.add_kill(Game::WORLD, 1, "MOD_CHAINGUN")
-
-    report = JSON.parse(capture_io { @game.death_report }.first)
-
-    assert_equal({ "MOD_SLIME" => 1, "MOD_CHAINGUN" => 1 }, report["Game_1"]["kills_by_means"])
   end
 end
