@@ -15,6 +15,17 @@ To run the project, execute the following command:
 To run the tests, execute:
 `` rake test``
 
+#### Structure
+``qgames.log`` is an example log file
+
+``/models/`` - classes used by the project
+
+``/utils/`` - utility modules used to parse the log
+
+``/tests/`` - tests developed for the project
+
+
+
 ## Reports
 The project supports the following reports:
 1 - Match info report for each match on the file
