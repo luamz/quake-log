@@ -8,6 +8,13 @@ This project consists of a log parser for the game Quake III Arena, which analyz
 #### Built-In Gems
 - Minitest
 - Rake
+
+## Running
+To run the project, execute the following command:
+``ruby main.rb``
+
+To run the tests, execute:
+``rake test``
   
 ## Structure
 
@@ -18,16 +25,6 @@ This project consists of a log parser for the game Quake III Arena, which analyz
 ``utils/`` - utility modules used to parse and rank the log
 
 ``tests/`` - tests developed for the project
-
-## Running
-To run the project, execute the following command:
-``ruby main.rb``
-
-To run the tests, execute:
-``rake test``
-
-
-
 
 ## Reports
 The project supports the following reports:
