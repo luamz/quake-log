@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '../models/game.rb'
+require_relative '../src/models/game.rb'
 
 class GameTest < Minitest::Test
   def setup

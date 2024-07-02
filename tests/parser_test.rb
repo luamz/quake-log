@@ -1,6 +1,6 @@
 require 'minitest/autorun'
-require_relative '../models/game'
-require_relative '../utils/parser'
+require_relative '../src/models/game'
+require_relative '../src/utils/parser'
 
 class ParseGameTest < Minitest::Test
   def setup

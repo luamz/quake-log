@@ -1,6 +1,6 @@
 require 'minitest/autorun'
-require_relative '../models/game.rb'
-require_relative '../utils/ranking.rb'
+require_relative '../src/models/game.rb'
+require_relative '../src/utils/ranking.rb'
 
 class GlobalRankingTest < Minitest::Test
   def setup

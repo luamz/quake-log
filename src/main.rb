@@ -2,7 +2,7 @@ require_relative 'utils/parser'
 require_relative 'utils/ranking'
 
 def main
-  file_name = "qgames.log"
+  file_name = "data/qgames.log"
   games = Parser.parse_log(file_name)
 
   # 3.3 - Create a script that prints a report (grouped information) for each match (...)
