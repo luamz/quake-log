@@ -13,7 +13,18 @@ To run the project, execute the following command:
 ``ruby main.rb``
 
 To run the tests, execute:
-`` rake test``
+``rake test``
+
+#### Structure
+``qgames.log`` is an example log file
+
+``/models/`` - classes used by the project
+
+``/utils/`` - utility modules used to parse the log
+
+``/tests/`` - tests developed for the project
+
+
 
 ## Reports
 The project supports the following reports:
