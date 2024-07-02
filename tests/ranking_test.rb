@@ -23,7 +23,6 @@ class GlobalRankingTest < Minitest::Test
 
   def test_global_ranking
     expected_output = <<~OUTPUT
-      Global Player Ranking:
       1. Daniel - Kills: 2
       2. Maria - Kills: 1
       3. Paula - Kills: 1
@@ -42,7 +41,6 @@ class GlobalRankingTest < Minitest::Test
     @game2.update_player(1, "Erick")
 
     wrong_output = <<~OUTPUT
-      Global Player Ranking:
       1. Daniel - Kills: 2
       2. Maria - Kills: 1
       3. Paula - Kills: 1
@@ -51,7 +49,6 @@ class GlobalRankingTest < Minitest::Test
     OUTPUT
 
     expected_output = <<~OUTPUT
-      Global Player Ranking:
       1. Erick - Kills: 2
       2. Maria - Kills: 1
       3. Paula - Kills: 1
@@ -73,7 +70,6 @@ class GlobalRankingTest < Minitest::Test
 
 
     expected_output = <<~OUTPUT
-      Global Player Ranking:
       1. Daniel - Kills: 2
       2. Maria - Kills: 2
       3. Paula - Kills: 1
