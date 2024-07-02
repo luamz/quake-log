@@ -31,7 +31,7 @@ class GlobalRankingTest < Minitest::Test
     OUTPUT
 
     games = [@game1, @game2]
-    output = capture_io { global_ranking(games) }.first
+    output = capture_io { Ranking.global_ranking(games) }.first
 
     assert_equal expected_output.strip, output.strip
   end
@@ -57,7 +57,7 @@ class GlobalRankingTest < Minitest::Test
     OUTPUT
 
     games = [@game1, @game2]
-    output = capture_io { global_ranking(games) }.first
+    output = capture_io { Ranking.global_ranking(games) }.first
 
     refute_equal wrong_output.strip, output.strip
     assert_equal expected_output.strip, output.strip
@@ -78,7 +78,7 @@ class GlobalRankingTest < Minitest::Test
     OUTPUT
 
     games = [@game1, @game2]
-    output = capture_io { global_ranking(games) }.first
+    output = capture_io { Ranking.global_ranking(games) }.first
 
     assert_equal expected_output.strip, output.strip
   end

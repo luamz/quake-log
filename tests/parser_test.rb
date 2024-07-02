@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require_relative '../models/game'
-require_relative '../utils/parsers'
+require_relative '../utils/parser'
 
 class ParseGameTest < Minitest::Test
   def setup
@@ -26,7 +26,7 @@ class ParseGameTest < Minitest::Test
   def test_parse_game
     @file = File.open(@log_filename, "r")
 
-    game = parse_game(@file, 1)
+    game = Parser.parse_game(@file, 1)
     assert_equal game.name, "Game_1"
 
     report = JSON.parse(capture_io { game.match_report }.first)
@@ -70,7 +70,7 @@ class ParseLogTest < Minitest::Test
   def test_parse_game
     @file = File.open(@log_filename, "r")
 
-    games = parse_log(@file)
+    games = Parser.parse_log(@file)
 
     assert_equal 2, games.count
 
