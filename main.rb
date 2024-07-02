@@ -1,5 +1,5 @@
 require_relative 'utils/parser'
-require_relative 'utils/ranking'
+require_relative 'utils/ranker'
 
 def main
   file_name = "data/qgames.log"
@@ -20,7 +20,7 @@ def main
 
   # 3.3. - (...) and a player ranking.
   puts "---------------------------- GLOBAL RANKING ----------------------------"
-  Ranking.global_ranking(games)
+  Ranker.global_ranking(games)
   puts "------------------------------------------------------------------------"
 
 end

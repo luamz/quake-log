@@ -1,4 +1,4 @@
-module Ranking
+module Ranker
 
   # Iterates all games and joins kills by player.id
   def self.global_ranking(games)
